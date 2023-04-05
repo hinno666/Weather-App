@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>WeatherApp</title>
+</head>
+<body>
+    <div class="wrapper">
+            <header class="header">
+                <h1 class="header__title">Прогноз погоды</h1>
+                <form class="header__form">
+                    <input type="text" class="header__input-text" placeholder="Введите название города">
+                    <button class="heder__form-button">Показать</button>
+                </form>
+            </header>
+            <main class="main">
+                <div class="main__card-container">
+                    <h2 class="card__title">London <span>GB</span></h2>
+                    <div class="card__weather">
+                        <div class="card__value">11°c</div>
+                        <img src="img/weather.png" alt="weather" class="card__image">
+                    </div>
+                    <p class="card__descr">Облачно</p>
+                </div>
+            </main>
+            <footer class="footer">
+                <p class="footer__text">Weather App</p>
+            </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
