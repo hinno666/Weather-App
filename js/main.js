@@ -4,7 +4,7 @@ const apiKey = "f091f83f5fea4daa93d164914230504";
 const header = document.querySelector(".header");
 const form = document.querySelector("#form");
 const input = document.querySelector("#inputCity");
-
+console.log(input);
 // Удаляем предыдущую карточку
 function removeCard() {
   const prevCard = document.querySelector(".main__card-container");
