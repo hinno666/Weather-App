@@ -5,7 +5,44 @@ const header = document.querySelector(".header");
 const form = document.querySelector("#form");
 const input = document.querySelector("#inputCity");
 
+// Удаляем предыдущую карточку
+function removeCard() {
+  const prevCard = document.querySelector(".main__card-container");
+  if (prevCard) {
+    prevCard.remove();
+  }
+}
+// Показ ошибки
+function showError(errorMessage) {
+     const html = `<div class="main__card-container">${errorMessage}</div>`;
+     header.insertAdjacentHTML("afterend", html);
+}
+// Отображение карточки 
+function showCard(name, country, temp, condition) {
+  // Разметка для карточки
+  const html = `
+                        <div class="main__card-container">
+
+                            <h2 class="card__title">${name}<span>${country}</span></h2>
+
+
+                                <div class="card__weather">
+                                    <div class="card__value">${temp}°c</div>
+                                    <img src="img/weather.png" alt="weather" class="card__image">
+                                </div>
+
+
+                            <p class="card__descr">${condition}</p>
+                         </div>
+                        `;
+
+  // Отображаем карточку на странице
+  header.insertAdjacentHTML("afterend", html);
+}
 // Слушаем отправку формы
+
+// Get conditions 
+
 
 form.addEventListener("submit", (e) => {
   //Отменяем отправку формы
@@ -26,42 +63,17 @@ form.addEventListener("submit", (e) => {
     .then((data) => {
       // Проверка на ошибку
       if (data.error) {
-        // Удаляем предыдущую карточку
-        const prevCard = document.querySelector(".main__card-container");
-        if (prevCard) {
-          prevCard.remove();
-        }
-        const html = `<div class="main__card-container">${data.error.message}</div>`;
-        // Отображаем карточку на странице
-        header.insertAdjacentHTML("afterend", html);
+        removeCard();
+        showError(data.error.message);
       } else {
         // Отображаем полученные данные в карточке
-        // Удаляем предыдущую карточку
-        const prevCard = document.querySelector(".main__card-container");
-
-        if (prevCard) {
-          prevCard.remove();
-        }
-
-        // Разметка для карточки
-        const html = `
-                        <div class="main__card-container">
-
-                            <h2 class="card__title">${data.location.name}<span>${data.location.country}</span></h2>
-
-
-                                <div class="card__weather">
-                                    <div class="card__value">${data.current.temp_c}°c</div>
-                                    <img src="img/weather.png" alt="weather" class="card__image">
-                                </div>
-
-
-                            <p class="card__descr">${data.current.condition.text}</p>
-                         </div>
-                        `;
-
-        // Отображаем карточку на странице
-        header.insertAdjacentHTML("afterend", html);
+        removeCard();
+        showCard(
+          data.location.name,
+          data.location.country,
+          data.current.temp_c,
+          data.current.condition.text
+        );
       }
     });
 });
