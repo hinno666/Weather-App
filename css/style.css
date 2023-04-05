@@ -230,3 +230,20 @@ body{
 	text-align: center;
 	font-weight: 700;
 }
+
+/*Media*/
+
+@media(max-width: 520px) {
+	.wrapper {
+		row-gap: 50px;
+	}
+	.header__form {
+    width: 300px;
+	display: block;
+	margin-bottom: 20px;
+}
+
+	.header__input-text {
+		margin-bottom: 10px;
+	}
+}
