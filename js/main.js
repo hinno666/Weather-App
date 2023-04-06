@@ -53,7 +53,7 @@ form.addEventListener("submit", (e) => {
 
   // Делаем запрос на сервер
   // Адерсс запроса
-  const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+  const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
   //Выполняем запрос
   fetch(url)
